@@ -160,6 +160,9 @@
   .menu-head{text-align:center;margin-bottom:1.6rem}
   .menu-head p{max-width:32em;margin:0 auto}
   .stubs{display:grid;gap:1.1rem;max-width:720px;margin:1.6rem auto 0}
+  .stubs.tease{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));max-width:600px;gap:.9rem}
+  .stub.tease{justify-content:center;text-align:center;padding:.95rem .6rem}
+  .stub.tease h3{margin:0;font-size:1.05rem}
   .stub{
     position:relative;
     display:flex;align-items:center;gap:1rem;
@@ -476,52 +479,16 @@
       <div class="menu-head">
         <span class="kicker">Tickets, please</span>
         <h2>The Menu</h2>
-        <p>Food from the El Pollo truck out front, cash prices on the stickers. Drinks pour inside and the list moves, so ask what's on. Card prices and the fine print live on the <a href="/menu/">full menu</a>.</p>
+        <p>Charcoal chicken from the truck out front, cold drinks from the bar inside. The chicken comes original or spicy, and that's all we're saying out here.</p>
       </div>
 
-      <div class="stubs">
-        <a class="stub" href="/menu/the-bowl/">
-          <div class="stub-body">
-            <h3>The Bowl</h3>
-            <p>grilled chicken, rice, roasted corn, cabbage slaw, queso fresco, green sauce.</p>
-          </div>
-          <div class="price"><span><small>$14.50</small></span></div>
-        </a>
-        <a class="stub" href="/menu/pollo-asado/">
-          <div class="stub-body">
-            <h3>Pollo Asado Meals</h3>
-            <p>charcoal chicken by the quarter, half or whole bird, with two sides, tortillas and a grilled jalapeno.</p>
-          </div>
-          <div class="price"><span><small>from<br>$15.50</small></span></div>
-        </a>
-        <a class="stub" href="/menu/tacos-de-pollo/">
-          <div class="stub-body">
-            <h3>Tacos de Pollo</h3>
-            <p>three soft tacos, pollo asado, green sauce, fresh cilantro.</p>
-          </div>
-          <div class="price"><span><small>$14.50</small></span></div>
-        </a>
-        <a class="stub" href="/menu/quesadilla/">
-          <div class="stub-body">
-            <h3>Quesadilla</h3>
-            <p>grilled chicken, melted cheese, green sauce.</p>
-          </div>
-          <div class="price"><span><small>$14.50</small></span></div>
-        </a>
-        <a class="stub" href="/menu/pollo-fries-nachos/">
-          <div class="stub-body">
-            <h3>Pollo Fries / Nachos</h3>
-            <p>fries or chips loaded with pollo asado, black beans, queso fresco.</p>
-          </div>
-          <div class="price"><span><small>$14.50</small></span></div>
-        </a>
-        <a class="stub" href="/menu/wings/">
-          <div class="stub-body">
-            <h3>Wings</h3>
-            <p>six sauces, five minimum per flavor.</p>
-          </div>
-          <div class="price"><span><small>$1.50<br>ea</small></span></div>
-        </a>
+      <div class="stubs tease">
+        <a class="stub tease" href="/menu/the-bowl/"><h3>The Bowl</h3></a>
+        <a class="stub tease" href="/menu/pollo-asado/"><h3>Pollo Asado</h3></a>
+        <a class="stub tease" href="/menu/tacos-de-pollo/"><h3>Tacos de Pollo</h3></a>
+        <a class="stub tease" href="/menu/quesadilla/"><h3>Quesadilla</h3></a>
+        <a class="stub tease" href="/menu/pollo-fries-nachos/"><h3>Pollo Fries / Nachos</h3></a>
+        <a class="stub tease" href="/menu/wings/"><h3>Wings</h3></a>
       </div>
       <div style="text-align:center;margin-top:1.8rem">
         <a class="btn" href="/menu/">See the full menu</a>
