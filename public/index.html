@@ -159,23 +159,7 @@
   /* ============ MENU ============ */
   .menu-head{text-align:center;margin-bottom:1.6rem}
   .menu-head p{max-width:32em;margin:0 auto}
-  .tabs{
-    display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap;
-    margin:1.6rem 0 1.8rem;
-  }
-  .tab{
-    font-family:'Righteous',cursive;font-size:1.05rem;
-    padding:.6rem 1.5rem;border-radius:999px;
-    border:3px solid var(--brown);
-    background:var(--cream-lite);color:var(--brown-deep);
-    cursor:pointer;
-    box-shadow:0 4px 0 var(--brown);
-  }
-  .tab[aria-selected="true"]{
-    background:var(--teal);color:var(--cream-lite);
-    transform:translateY(2px);box-shadow:0 2px 0 var(--brown);
-  }
-  .stubs{display:grid;gap:1.1rem;max-width:720px;margin:0 auto}
+  .stubs{display:grid;gap:1.1rem;max-width:720px;margin:1.6rem auto 0}
   .stub{
     position:relative;
     display:flex;align-items:center;gap:1rem;
@@ -211,7 +195,7 @@
     transform:rotate(7deg);
     padding:.2rem;
   }
-  #panel-pollo .price span{background:var(--teal)}
+  .stubs .price span{background:var(--teal)}
   .price span small{font-size:.78rem;display:block}
 
   /* ============ FIND US ============ */
@@ -492,60 +476,10 @@
       <div class="menu-head">
         <span class="kicker">Tickets, please</span>
         <h2>The Menu</h2>
-        <p>Drinks from the bar, food from the truck. Cash prices on the stickers; card prices and the fine print live on the <a href="/menu/">full menu</a>.</p>
+        <p>Food from the El Pollo truck out front, cash prices on the stickers. Drinks pour inside and the list moves, so ask what's on. Card prices and the fine print live on the <a href="/menu/">full menu</a>.</p>
       </div>
 
-      <div class="tabs" role="tablist" aria-label="Menu sections">
-        <button class="tab" id="tab-taps" role="tab" aria-selected="true" aria-controls="panel-taps">Taps &amp; Drinks</button>
-        <button class="tab" id="tab-pollo" role="tab" aria-selected="false" aria-controls="panel-pollo" tabindex="-1">El Pollo Kitchen</button>
-      </div>
-
-      <div id="panel-taps" class="stubs" role="tabpanel" aria-labelledby="tab-taps">
-        <article class="stub">
-          <div class="stub-body">
-            <h3>Rotating Colorado craft taps</h3>
-            <p>8 handles, ask what's pouring.</p>
-          </div>
-          <div class="price"><span>$6-8</span></div>
-        </article>
-        <article class="stub">
-          <div class="stub-body">
-            <h3>Coco Loco</h3>
-            <p>rum, coconut cream, lime, served cold enough to sweat.</p>
-          </div>
-          <div class="price"><span>$11</span></div>
-        </article>
-        <article class="stub">
-          <div class="stub-body">
-            <h3>Michelada</h3>
-            <p>beer, lime, spice, salt rim.</p>
-          </div>
-          <div class="price"><span>$8</span></div>
-        </article>
-        <article class="stub">
-          <div class="stub-body">
-            <h3>Rum Punch</h3>
-            <p>the house pour, changes with Yofran's mood.</p>
-          </div>
-          <div class="price"><span>$10</span></div>
-        </article>
-        <article class="stub">
-          <div class="stub-body">
-            <h3>Margarita on the rocks</h3>
-            <p>no slush machine, never will be.</p>
-          </div>
-          <div class="price"><span>$9</span></div>
-        </article>
-        <article class="stub">
-          <div class="stub-body">
-            <h3>Limonada de coco</h3>
-            <p>no booze, all beach.</p>
-          </div>
-          <div class="price"><span>$5</span></div>
-        </article>
-      </div>
-
-      <div id="panel-pollo" class="stubs" role="tabpanel" aria-labelledby="tab-pollo" hidden>
+      <div class="stubs">
         <a class="stub" href="/menu/the-bowl/">
           <div class="stub-body">
             <h3>The Bowl</h3>
@@ -588,6 +522,9 @@
           </div>
           <div class="price"><span><small>$1.50<br>ea</small></span></div>
         </a>
+      </div>
+      <div style="text-align:center;margin-top:1.8rem">
+        <a class="btn" href="/menu/">See the full menu</a>
       </div>
     </div>
   </section>
@@ -644,31 +581,6 @@
 
 <script>
 (function(){
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
-  function activate(tab, setFocus){
-    tabs.forEach(function(t){
-      var selected = (t === tab);
-      t.setAttribute('aria-selected', selected ? 'true' : 'false');
-      t.tabIndex = selected ? 0 : -1;
-      var panel = document.getElementById(t.getAttribute('aria-controls'));
-      if(panel){ panel.hidden = !selected; }
-    });
-    if(setFocus){ tab.focus(); }
-  }
-  tabs.forEach(function(t){
-    t.addEventListener('click', function(){ activate(t, false); });
-    t.addEventListener('keydown', function(e){
-      var i = tabs.indexOf(t);
-      if(e.key === 'ArrowRight' || e.key === 'ArrowDown'){
-        e.preventDefault();
-        activate(tabs[(i + 1) % tabs.length], true);
-      } else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
-        e.preventDefault();
-        activate(tabs[(i - 1 + tabs.length) % tabs.length], true);
-      }
-    });
-  });
-
   var trout = document.getElementById('heroTrout');
   if(trout){
     trout.addEventListener('click', function(){
