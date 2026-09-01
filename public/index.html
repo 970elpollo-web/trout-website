@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Tipsy Trout Taproom | Delta, Colorado</title>
+<meta name="description" content="A Caribbean beach bar in Delta, Colorado. Misters, surfboards, Colombian street food from the El Pollo truck outside. The ocean is 700 miles away. That is the point.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5E8CE;
+    --cream-lite:#FBF3E0;
+    --orange:#E8542F;
+    --gold:#F2B33D;
+    --teal:#4E8577;
+    --brown:#7A4A2B;
+    --brown-deep:#5C3720;
+    --radius:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Rubik',sans-serif;
+    background:var(--cream);
+    color:var(--brown-deep);
+    line-height:1.6;
+    font-size:17px;
+  }
+  h1,h2,h3,.display{font-family:'Righteous',cursive;font-weight:400;line-height:1.15}
+  a{color:var(--orange)}
+  a:focus-visible,button:focus-visible{
+    outline:3px dashed var(--brown);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+  .skip{
+    position:absolute;left:-999px;top:0;background:var(--gold);color:var(--brown-deep);
+    padding:.6rem 1rem;border-radius:0 0 12px 0;z-index:99;font-weight:700;text-decoration:none;
+  }
+  .skip:focus{left:0}
+
+  /* ============ NAV ============ */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--cream);
+    border-bottom:4px solid var(--brown);
+    display:flex;align-items:center;justify-content:space-between;
+    gap:.75rem;flex-wrap:wrap;
+    padding:.7rem clamp(1rem,4vw,2.5rem);
+  }
+  .brand{
+    display:flex;align-items:center;gap:.6rem;
+    text-decoration:none;color:var(--brown-deep);
+  }
+  .brand svg{width:52px;height:26px;flex:none}
+  .brand span{font-family:'Righteous',cursive;font-size:1.15rem;letter-spacing:.5px}
+  .nav-links{display:flex;gap:clamp(.75rem,3vw,1.75rem);list-style:none}
+  .nav-links a{
+    color:var(--brown-deep);text-decoration:none;font-weight:500;
+    padding:.25rem .1rem;
+  }
+  .nav-links a:hover{
+    color:var(--orange);
+    text-decoration:underline wavy var(--teal) 2px;
+    text-underline-offset:6px;
+  }
+
+  /* ============ HERO POSTER ============ */
+  .hero{
+    padding:clamp(1.25rem,4vw,3rem) clamp(.75rem,4vw,2.5rem) 0;
+    display:flex;justify-content:center;
+  }
+  .poster{
+    width:min(880px,100%);
+    background:var(--cream-lite);
+    border:10px solid var(--brown);
+    border-radius:24px;
+    box-shadow:0 8px 0 rgba(122,74,43,.25);
+    padding:clamp(.5rem,2vw,1rem);
+  }
+  .poster-inner{
+    border-radius:16px;
+    overflow:hidden;
+    border:3px solid var(--gold);
+    background:linear-gradient(180deg,var(--cream-lite) 0%,var(--cream) 55%,#F0DDB4 100%);
+  }
+  .poster-inner svg{display:block;width:100%;height:auto}
+  .hero-caption{
+    text-align:center;
+    padding:1.1rem 1rem 1.4rem;
+  }
+  .hero-caption p.lead{
+    font-size:clamp(1.05rem,2.5vw,1.3rem);
+    max-width:34em;margin:0 auto .35rem;
+  }
+  .hero-caption .est{
+    color:var(--teal);font-size:.9rem;font-style:italic;margin-bottom:1.1rem;
+  }
+  .btn{
+    display:inline-block;
+    font-family:'Righteous',cursive;
+    font-size:1.05rem;
+    text-decoration:none;
+    background:var(--orange);color:var(--cream-lite);
+    padding:.65rem 1.5rem;border-radius:999px;
+    border:3px solid var(--brown);
+    box-shadow:0 4px 0 var(--brown);
+    margin:.25rem .3rem;
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .btn.ghost{background:var(--teal)}
+  .btn:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--brown)}
+
+  /* ============ WAVE BAND DIVIDER ============ */
+  .waveband{display:block;width:100%;height:clamp(56px,9vw,96px)}
+
+  /* ============ SECTIONS ============ */
+  section{scroll-margin-top:90px}
+  .wrap{
+    max-width:960px;margin:0 auto;
+    padding:clamp(2rem,6vw,4rem) clamp(1rem,4vw,2rem);
+  }
+  .kicker{
+    display:inline-block;
+    font-family:'Righteous',cursive;
+    background:var(--gold);color:var(--brown-deep);
+    padding:.2rem .9rem;border-radius:999px;
+    font-size:.85rem;letter-spacing:1px;text-transform:uppercase;
+    margin-bottom:.8rem;
+  }
+  h2{
+    font-size:clamp(2rem,5.5vw,3rem);
+    color:var(--orange);
+    margin-bottom:1rem;
+  }
+  h2 .alt{color:var(--teal)}
+  .twocol{
+    display:grid;grid-template-columns:1.2fr 1fr;
+    gap:clamp(1.5rem,4vw,3rem);align-items:center;
+  }
+  .twocol p{margin-bottom:1rem;max-width:36em}
+  .sidecard{
+    background:var(--cream-lite);
+    border:3px solid var(--brown);
+    border-radius:var(--radius);
+    padding:1rem;
+    box-shadow:6px 6px 0 var(--gold);
+  }
+  .sidecard svg{display:block;width:100%;height:auto;border-radius:12px}
+  .sidecard figcaption{
+    text-align:center;font-size:.85rem;font-style:italic;
+    color:var(--brown);padding-top:.6rem;
+  }
+  .pollo-band{background:#EBD9B4}
+  .note{font-size:.9rem;color:var(--brown);font-style:italic}
+
+  /* ============ MENU ============ */
+  .menu-head{text-align:center;margin-bottom:1.6rem}
+  .menu-head p{max-width:32em;margin:0 auto}
+  .tabs{
+    display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap;
+    margin:1.6rem 0 1.8rem;
+  }
+  .tab{
+    font-family:'Righteous',cursive;font-size:1.05rem;
+    padding:.6rem 1.5rem;border-radius:999px;
+    border:3px solid var(--brown);
+    background:var(--cream-lite);color:var(--brown-deep);
+    cursor:pointer;
+    box-shadow:0 4px 0 var(--brown);
+  }
+  .tab[aria-selected="true"]{
+    background:var(--teal);color:var(--cream-lite);
+    transform:translateY(2px);box-shadow:0 2px 0 var(--brown);
+  }
+  .stubs{display:grid;gap:1.1rem;max-width:720px;margin:0 auto}
+  .stub{
+    position:relative;
+    display:flex;align-items:center;gap:1rem;
+    background:var(--cream-lite);
+    border:2px solid var(--brown);
+    border-radius:18px;
+    padding:1rem 1.25rem;
+    -webkit-mask:
+      radial-gradient(circle 13px at 0 50%,transparent 12px,#000 13px) left/51% 100% no-repeat,
+      radial-gradient(circle 13px at 100% 50%,transparent 12px,#000 13px) right/51% 100% no-repeat;
+    mask:
+      radial-gradient(circle 13px at 0 50%,transparent 12px,#000 13px) left/51% 100% no-repeat,
+      radial-gradient(circle 13px at 100% 50%,transparent 12px,#000 13px) right/51% 100% no-repeat;
+  }
+  .stub-body{flex:1;min-width:0;padding-left:.5rem}
+  .stub h3{font-size:1.25rem;color:var(--brown-deep);margin-bottom:.15rem}
+  .stub p{font-size:.95rem;color:#6B4A30}
+  .price{
+    flex:none;
+    border-left:3px dashed rgba(122,74,43,.45);
+    padding-left:1rem;
+    display:flex;align-items:center;
+  }
+  .price span{
+    display:flex;align-items:center;justify-content:center;
+    width:64px;height:64px;border-radius:50%;
+    background:var(--orange);color:var(--cream-lite);
+    font-family:'Righteous',cursive;font-size:1.05rem;
+    text-align:center;line-height:1.05;
+    transform:rotate(7deg);
+    padding:.2rem;
+  }
+  #panel-pollo .price span{background:var(--teal)}
+  .price span small{font-size:.78rem;display:block}
+
+  /* ============ FIND US ============ */
+  .find{background:var(--brown);color:var(--cream)}
+  .find h2{color:var(--gold)}
+  .find .kicker{background:var(--orange);color:var(--cream-lite)}
+  .find-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:clamp(1.25rem,4vw,2.5rem);margin-top:1.5rem;
+  }
+  .find-card{
+    background:var(--brown-deep);
+    border:3px solid var(--gold);
+    border-radius:var(--radius);
+    padding:1.4rem 1.5rem;
+  }
+  .find-card h3{color:var(--gold);margin-bottom:.7rem;font-size:1.25rem}
+  .find-card a{color:var(--cream-lite)}
+  .hours{list-style:none}
+  .hours li{
+    display:flex;justify-content:space-between;gap:1rem;
+    padding:.35rem 0;border-bottom:2px dotted rgba(245,232,206,.3);
+  }
+  .hours li:last-child{border-bottom:none}
+  .hours .day{font-weight:700;color:var(--gold)}
+  .find address{font-style:normal;margin-bottom:.7rem}
+  .find .note{color:#E9CFA6}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--brown-deep);color:var(--cream)}
+  .foot-inner{
+    max-width:960px;margin:0 auto;
+    padding:1.6rem clamp(1rem,4vw,2rem) 2.2rem;
+    text-align:center;
+  }
+  .foot-inner svg{width:76px;height:38px;margin-bottom:.5rem}
+  .foot-inner p{font-size:.95rem}
+  .foot-inner .tiny{font-size:.8rem;color:#C9A87E;margin-top:.4rem;font-style:italic}
+
+  /* ============ MOTION ============ */
+  @keyframes bob{from{transform:translateY(0)}to{transform:translateY(-8px)}}
+  .bob{animation:bob 3.5s ease-in-out infinite alternate}
+  #heroTrout{cursor:pointer}
+  @keyframes trout-jump{0%{transform:translate(0,0) rotate(0)}45%{transform:translate(-12px,-42px) rotate(-14deg)}100%{transform:translate(0,0) rotate(0)}}
+  #heroTrout.jump{animation:trout-jump .8s cubic-bezier(.34,1.3,.64,1) 1}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:760px){
+    .twocol{grid-template-columns:1fr}
+    .find-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:480px){
+    .brand span{font-size:1rem}
+    .stub{flex-direction:column;align-items:stretch;text-align:center;gap:.6rem}
+    .stub-body{padding-left:0}
+    .price{border-left:none;border-top:3px dashed rgba(122,74,43,.45);padding:.7rem 0 0;justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#menu">Skip to the menu</a>
+
+<!-- Shared SVG defs: trout, longboard, wave path -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="trout" viewBox="0 0 300 160">
+      <!-- tail -->
+      <path d="M14 38 L74 72 Q60 80 60 82 Q60 84 74 92 L14 126 Q40 96 40 82 Q40 68 14 38 Z"
+            fill="#E8542F" stroke="#7A4A2B" stroke-width="7" stroke-linejoin="round"/>
+      <!-- body -->
+      <path d="M58 82 C 74 44, 150 26, 205 42 C 245 54, 272 72, 282 84 C 262 104, 210 126, 158 122 C 110 118, 70 104, 58 82 Z"
+            fill="#4E8577" stroke="#7A4A2B" stroke-width="7" stroke-linejoin="round"/>
+      <!-- belly swipe -->
+      <path d="M84 100 C 120 116, 190 120, 248 100 C 222 114, 170 126, 130 118 C 108 114, 92 108, 84 100 Z"
+            fill="#F2B33D" stroke="none"/>
+      <!-- dorsal fin -->
+      <path d="M128 34 L150 8 L176 30 Q152 26 128 34 Z"
+            fill="#E8542F" stroke="#7A4A2B" stroke-width="6" stroke-linejoin="round"/>
+      <!-- lower fin -->
+      <path d="M140 120 L128 146 L164 128 Q152 126 140 120 Z"
+            fill="#E8542F" stroke="#7A4A2B" stroke-width="6" stroke-linejoin="round"/>
+      <!-- trout spots -->
+      <circle cx="104" cy="70" r="6" fill="#7A4A2B"/>
+      <circle cx="132" cy="56" r="5" fill="#F5E8CE"/>
+      <circle cx="126" cy="88" r="5" fill="#7A4A2B"/>
+      <circle cx="158" cy="70" r="6" fill="#F5E8CE"/>
+      <circle cx="176" cy="52" r="4" fill="#7A4A2B"/>
+      <circle cx="182" cy="92" r="5" fill="#7A4A2B"/>
+      <!-- mouth -->
+      <path d="M282 84 Q 268 92 254 92" fill="none" stroke="#7A4A2B" stroke-width="6" stroke-linecap="round"/>
+      <!-- sunglasses -->
+      <path d="M196 52 L268 60" fill="none" stroke="#5C3720" stroke-width="6" stroke-linecap="round"/>
+      <rect x="204" y="50" width="32" height="24" rx="7" fill="#5C3720"/>
+      <rect x="244" y="54" width="26" height="22" rx="7" fill="#5C3720"/>
+      <path d="M236 62 L244 64" fill="none" stroke="#5C3720" stroke-width="6" stroke-linecap="round"/>
+      <!-- lens glints -->
+      <path d="M210 56 L216 66" stroke="#F5E8CE" stroke-width="3" stroke-linecap="round"/>
+      <path d="M250 59 L255 68" stroke="#F5E8CE" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="board" viewBox="0 0 44 170">
+      <path d="M22 2 C32 34 34 104 28 158 C26 166 18 166 16 158 C10 104 12 34 22 2 Z" fill="#7A4A2B"/>
+      <rect x="20" y="10" width="4" height="146" rx="2" fill="#F2B33D"/>
+    </symbol>
+    <path id="dwv" d="M0 15 Q75 0 150 15 T300 15 T450 15 T600 15 T750 15 T900 15 T1050 15 T1200 15 L1200 400 L0 400 Z"/>
+  </defs>
+</svg>
+
+<header class="nav">
+  <a class="brand" href="#top">
+    <svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><use href="#trout"/></svg>
+    <span>The Tipsy Trout Taproom</span>
+  </a>
+  <nav aria-label="Main">
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#patio">The Patio</a></li>
+      <li><a href="#find">Find Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <div class="poster">
+      <div class="poster-inner">
+        <svg viewBox="0 0 800 560" role="img" aria-labelledby="heroTitle heroDesc">
+          <title id="heroTitle">The Tipsy Trout Taproom</title>
+          <desc id="heroDesc">A 1970s style surf poster: a setting sun of concentric gold and orange circles, layered waves, a longboard leaning at the edge, and a hand-painted trout in sunglasses riding the top wave.</desc>
+
+          <!-- setting sun -->
+          <circle cx="400" cy="330" r="185" fill="#F2B33D" opacity="0.3"/>
+          <circle cx="400" cy="330" r="152" fill="#F2B33D" opacity="0.55"/>
+          <circle cx="400" cy="330" r="120" fill="#F2B33D" opacity="0.85"/>
+          <circle cx="400" cy="330" r="90" fill="#E8542F" opacity="0.75"/>
+          <circle cx="400" cy="330" r="62" fill="#E8542F"/>
+
+          <!-- arced wordmark -->
+          <path id="arcpath" d="M140 340 A 260 260 0 0 1 660 340" fill="none"/>
+          <text style="font-family:'Righteous',cursive" font-size="56" fill="#7A4A2B" letter-spacing="3">
+            <textPath href="#arcpath" startOffset="50%" text-anchor="middle">THE TIPSY TROUT</textPath>
+          </text>
+          <rect x="302" y="338" width="196" height="44" rx="22" fill="#7A4A2B"/>
+          <text x="400" y="368" text-anchor="middle" style="font-family:'Righteous',cursive" font-size="24" fill="#F5E8CE" letter-spacing="7">TAPROOM</text>
+
+          <!-- longboard leaning in -->
+          <g transform="translate(76 190) rotate(9)">
+            <use href="#board" width="66" height="255"/>
+          </g>
+
+          <!-- trout riding the top wave -->
+          <g transform="translate(560 322) rotate(-12)">
+            <g class="bob">
+              <g id="heroTrout">
+                <use href="#trout" width="120" height="64"/>
+              </g>
+            </g>
+          </g>
+
+          <!-- layered waves -->
+          <path d="M0 400 Q50 384 100 400 T200 400 T300 400 T400 400 T500 400 T600 400 T700 400 T800 400 L800 560 L0 560 Z" fill="#E8542F"/>
+          <path d="M0 442 Q50 426 100 442 T200 442 T300 442 T400 442 T500 442 T600 442 T700 442 T800 442 L800 560 L0 560 Z" fill="#F2B33D"/>
+          <path d="M0 484 Q50 468 100 484 T200 484 T300 484 T400 484 T500 484 T600 484 T700 484 T800 484 L800 560 L0 560 Z" fill="#4E8577"/>
+          <path d="M0 526 Q50 510 100 526 T200 526 T300 526 T400 526 T500 526 T600 526 T700 526 T800 526 L800 560 L0 560 Z" fill="#7A4A2B"/>
+        </svg>
+      </div>
+      <div class="hero-caption">
+        <p class="lead">A Caribbean beach bar on Main Street in Delta, Colorado. The nearest ocean is about 700 miles away. We checked. We opened anyway.</p>
+        <p class="est">est. whenever the misters went in</p>
+        <a class="btn" href="#menu">See the Menu</a>
+        <a class="btn ghost" href="#find">Find Us</a>
+      </div>
+    </div>
+  </div>
+
+  <svg class="waveband" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <use href="#dwv" fill="#E8542F"/>
+    <use href="#dwv" y="30" fill="#F2B33D"/>
+    <use href="#dwv" y="60" fill="#4E8577"/>
+    <use href="#dwv" y="90" fill="#7A4A2B"/>
+  </svg>
+
+  <!-- ============ THE PATIO / VIBE ============ -->
+  <section id="patio">
+    <div class="wrap twocol">
+      <div>
+        <span class="kicker">The Vibe</span>
+        <h2>The Patio<span class="alt">.</span> Beach rules apply<span class="alt">.</span></h2>
+        <p>Delta is high desert, dusty and bright. So we hung surfboards on the walls and put misters over the patio. Ten steps off Main Street and it feels like a beach day, minus the sand in your sandwich.</p>
+        <p>Nobody has surfed the Gunnison on a longboard yet. We keep one waxed just in case. Until then the boards stay bolted to the wall, the misters stay on, and the sunset over the Grand Mesa does the rest of the decorating for free.</p>
+        <p class="note">Dogs welcome on the patio. Flip flops encouraged, never required.</p>
+      </div>
+      <figure class="sidecard">
+        <svg viewBox="0 0 320 240" role="img" aria-label="Flat illustration of two surfboards under a mister spraying droplets, with a sun behind them">
+          <rect width="320" height="240" rx="10" fill="#F5E8CE"/>
+          <circle cx="160" cy="120" r="92" fill="#F2B33D" opacity="0.35"/>
+          <circle cx="160" cy="120" r="64" fill="#F2B33D" opacity="0.6"/>
+          <g transform="translate(112 40) rotate(-8)">
+            <use href="#board" width="40" height="155"/>
+          </g>
+          <g transform="translate(172 44) rotate(7)">
+            <use href="#board" width="40" height="155"/>
+          </g>
+          <rect x="20" y="16" width="280" height="8" rx="4" fill="#4E8577"/>
+          <circle cx="60" cy="38" r="4" fill="#4E8577"/>
+          <circle cx="110" cy="46" r="3" fill="#4E8577"/>
+          <circle cx="210" cy="46" r="3" fill="#4E8577"/>
+          <circle cx="260" cy="38" r="4" fill="#4E8577"/>
+          <circle cx="86" cy="58" r="3" fill="#4E8577"/>
+          <circle cx="236" cy="58" r="3" fill="#4E8577"/>
+          <path d="M0 208 Q40 194 80 208 T160 208 T240 208 T320 208 L320 240 L0 240 Z" fill="#4E8577"/>
+        </svg>
+        <figcaption>the boards are bolted down, we learned that one early</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <svg class="waveband" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <use href="#dwv" fill="#E8542F"/>
+    <use href="#dwv" y="30" fill="#F2B33D"/>
+    <use href="#dwv" y="60" fill="#4E8577"/>
+    <use href="#dwv" y="90" fill="#7A4A2B"/>
+  </svg>
+
+  <!-- ============ EL POLLO ============ -->
+  <section id="pollo" class="pollo-band">
+    <div class="wrap twocol">
+      <figure class="sidecard">
+        <svg viewBox="0 0 320 240" role="img" aria-label="Flat illustration of the El Pollo food truck with a striped awning and steam rising from the window">
+          <rect width="320" height="240" rx="10" fill="#F5E8CE"/>
+          <circle cx="252" cy="66" r="42" fill="#F2B33D" opacity="0.5"/>
+          <rect x="34" y="86" width="200" height="98" rx="14" fill="#E8542F"/>
+          <rect x="234" y="116" width="52" height="68" rx="10" fill="#E8542F"/>
+          <rect x="244" y="126" width="32" height="24" rx="5" fill="#F5E8CE"/>
+          <rect x="52" y="104" width="96" height="50" rx="8" fill="#F5E8CE"/>
+          <path d="M44 86 L156 86 L148 66 L52 66 Z" fill="#4E8577"/>
+          <path d="M44 86 L58 86 L58 66 L52 66 Z" fill="#F2B33D"/>
+          <path d="M72 86 L86 86 L86 66 L80 66 Z" fill="#F2B33D"/>
+          <path d="M100 86 L114 86 L114 66 L108 66 Z" fill="#F2B33D"/>
+          <path d="M128 86 L142 86 L142 66 L136 66 Z" fill="#F2B33D"/>
+          <text x="188" y="140" text-anchor="middle" style="font-family:'Righteous',cursive" font-size="22" fill="#F5E8CE">EL</text>
+          <text x="188" y="166" text-anchor="middle" style="font-family:'Righteous',cursive" font-size="20" fill="#F5E8CE">POLLO</text>
+          <path d="M84 96 C80 84 92 80 88 68" stroke="#7A4A2B" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <path d="M108 98 C104 88 116 82 112 72" stroke="#7A4A2B" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="84" cy="196" r="18" fill="#7A4A2B"/>
+          <circle cx="84" cy="196" r="8" fill="#F5E8CE"/>
+          <circle cx="208" cy="196" r="18" fill="#7A4A2B"/>
+          <circle cx="208" cy="196" r="8" fill="#F5E8CE"/>
+          <rect x="10" y="208" width="300" height="8" rx="4" fill="#4E8577"/>
+        </svg>
+        <figcaption>parked outside, exactly where a kitchen should be</figcaption>
+      </figure>
+      <div>
+        <span class="kicker">The Kitchen Outside</span>
+        <h2>El Pollo<span class="alt">.</span></h2>
+        <p>Yofran's wife is from Colombia, and the family recipes ride along in the truck parked out front. The chicken cooks over real charcoal. The aji verde goes on everything (someone put it on a margarita rim once, and honestly we let it happen).</p>
+        <p>Order at the window or at the bar. Either way the food finds your table on the patio. It always does.</p>
+      </div>
+    </div>
+  </section>
+
+  <svg class="waveband" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <use href="#dwv" fill="#E8542F"/>
+    <use href="#dwv" y="30" fill="#F2B33D"/>
+    <use href="#dwv" y="60" fill="#4E8577"/>
+    <use href="#dwv" y="90" fill="#7A4A2B"/>
+  </svg>
+
+  <!-- ============ MENU ============ -->
+  <section id="menu">
+    <div class="wrap">
+      <div class="menu-head">
+        <span class="kicker">Tickets, please</span>
+        <h2>The Menu</h2>
+        <p>Drinks from the bar, food from the truck. Prices on the stickers, no fine print.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Menu sections">
+        <button class="tab" id="tab-taps" role="tab" aria-selected="true" aria-controls="panel-taps">Taps &amp; Drinks</button>
+        <button class="tab" id="tab-pollo" role="tab" aria-selected="false" aria-controls="panel-pollo" tabindex="-1">El Pollo Kitchen</button>
+      </div>
+
+      <div id="panel-taps" class="stubs" role="tabpanel" aria-labelledby="tab-taps">
+        <article class="stub">
+          <div class="stub-body">
+            <h3>Rotating Colorado craft taps</h3>
+            <p>8 handles, ask what's pouring.</p>
+          </div>
+          <div class="price"><span>$6-8</span></div>
+        </article>
+        <article class="stub">
+          <div class="stub-body">
+            <h3>Coco Loco</h3>
+            <p>rum, coconut cream, lime, served cold enough to sweat.</p>
+          </div>
+          <div class="price"><span>$11</span></div>
+        </article>
+        <article class="stub">
+          <div class="stub-body">
+            <h3>Michelada</h3>
+            <p>beer, lime, spice, salt rim.</p>
+          </div>
+          <div class="price"><span>$8</span></div>
+        </article>
+        <article class="stub">
+          <div class="stub-body">
+            <h3>Rum Punch</h3>
+            <p>the house pour, changes with Yofran's mood.</p>
+          </div>
+          <div class="price"><span>$10</span></div>
+        </article>
+        <article class="stub">
+          <div class="stub-body">
+            <h3>Margarita on the rocks</h3>
+            <p>no slush machine, never will be.</p>
+          </div>
+          <div class="price"><span>$9</span></div>
+        </article>
+        <article class="stub">
+          <div class="stub-body">
+            <h3>Limonada de coco</h3>
+            <p>no booze, all beach.</p>
+          </div>
+          <div class="price"><span>$5</span></div>
+        </article>
+      </div>
+
+      <div id="panel-pollo" class="stubs" role="tabpanel" aria-labelledby="tab-pollo" hidden>
+        <article class="stub">
+          <div class="stub-body">
+            <h3>Pollo asado</h3>
+            <p>charcoal chicken, quarter or half, with aji verde.</p>
+          </div>
+          <div class="price"><span><small>$9 /<br>$14</small></span></div>
+        </article>
+        <article class="stub">
+          <div class="stub-body">
+            <h3>Arepas con queso</h3>
+            <p>griddled corn cakes, salty cheese.</p>
+          </div>
+          <div class="price"><span>$6</span></div>
+        </article>
+        <article class="stub">
+          <div class="stub-body">
+            <h3>Empanadas</h3>
+            <p>beef or chicken, crisp, three to an order.</p>
+          </div>
+          <div class="price"><span>$8</span></div>
+        </article>
+        <article class="stub">
+          <div class="stub-body">
+            <h3>Patacones</h3>
+            <p>smashed fried plantains with garlic sauce.</p>
+          </div>
+          <div class="price"><span>$7</span></div>
+        </article>
+        <article class="stub">
+          <div class="stub-body">
+            <h3>Salchipapas</h3>
+            <p>fries and sausage, the late-night classic.</p>
+          </div>
+          <div class="price"><span>$8</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <svg class="waveband" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <use href="#dwv" fill="#E8542F"/>
+    <use href="#dwv" y="30" fill="#F2B33D"/>
+    <use href="#dwv" y="60" fill="#4E8577"/>
+    <use href="#dwv" y="90" fill="#7A4A2B"/>
+  </svg>
+
+  <!-- ============ FIND US ============ -->
+  <section id="find" class="find">
+    <div class="wrap">
+      <span class="kicker">Point your sandals here</span>
+      <h2>Find Us</h2>
+      <p>Right on Main Street. Follow the smell of charcoal chicken and the sound of somebody ordering one more rum punch.</p>
+      <div class="find-grid">
+        <div class="find-card">
+          <h3>Where</h3>
+          <address>321 Main St<br>Delta, CO 81416</address>
+          <p><a href="tel:+19705550148">(970) 555-0148</a></p>
+          <p class="note">Placeholder details while we finish the sign. Call first if you're driving far.</p>
+        </div>
+        <div class="find-card">
+          <h3>Hours</h3>
+          <ul class="hours">
+            <li><span class="day">Tue-Thu</span><span>3pm-10pm</span></li>
+            <li><span class="day">Fri-Sat</span><span>12pm-12am</span></li>
+            <li><span class="day">Sun</span><span>12pm-8pm</span></li>
+            <li><span class="day">Mon</span><span>Closed (even trout rest)</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <svg class="waveband" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <use href="#dwv" fill="#E8542F"/>
+      <use href="#dwv" y="30" fill="#F2B33D"/>
+      <use href="#dwv" y="60" fill="#4E8577"/>
+      <use href="#dwv" y="90" fill="#7A4A2B"/>
+    </svg>
+    <div class="foot-inner">
+      <svg viewBox="0 0 120 60" aria-hidden="true" focusable="false"><use href="#trout"/></svg>
+      <p>The Tipsy Trout Taproom, Delta, Colorado. No ocean. No apologies.</p>
+      <p class="tiny">hang loose, drink water too</p>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function activate(tab, setFocus){
+    tabs.forEach(function(t){
+      var selected = (t === tab);
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+      t.tabIndex = selected ? 0 : -1;
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      if(panel){ panel.hidden = !selected; }
+    });
+    if(setFocus){ tab.focus(); }
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ activate(t, false); });
+    t.addEventListener('keydown', function(e){
+      var i = tabs.indexOf(t);
+      if(e.key === 'ArrowRight' || e.key === 'ArrowDown'){
+        e.preventDefault();
+        activate(tabs[(i + 1) % tabs.length], true);
+      } else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
+        e.preventDefault();
+        activate(tabs[(i - 1 + tabs.length) % tabs.length], true);
+      }
+    });
+  });
+
+  var trout = document.getElementById('heroTrout');
+  if(trout){
+    trout.addEventListener('click', function(){
+      trout.classList.remove('jump');
+      void trout.getBoundingClientRect();
+      trout.classList.add('jump');
+    });
+    trout.addEventListener('animationend', function(){ trout.classList.remove('jump'); });
+  }
+})();
+</script>
+</body>
+</html>
