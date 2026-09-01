@@ -159,47 +159,13 @@
   /* ============ MENU ============ */
   .menu-head{text-align:center;margin-bottom:1.6rem}
   .menu-head p{max-width:32em;margin:0 auto}
-  .stubs{display:grid;gap:1.1rem;max-width:720px;margin:1.6rem auto 0}
-  .stubs.tease{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));max-width:600px;gap:.9rem}
-  .stub.tease{justify-content:center;text-align:center;padding:.95rem .6rem}
-  .stub.tease h3{margin:0;font-size:1.05rem}
-  .stub{
-    position:relative;
-    display:flex;align-items:center;gap:1rem;
-    background:var(--cream-lite);
-    border:2px solid var(--brown);
-    border-radius:18px;
-    padding:1rem 1.25rem;
-    -webkit-mask:
-      radial-gradient(circle 13px at 0 50%,transparent 12px,#000 13px) left/51% 100% no-repeat,
-      radial-gradient(circle 13px at 100% 50%,transparent 12px,#000 13px) right/51% 100% no-repeat;
-    mask:
-      radial-gradient(circle 13px at 0 50%,transparent 12px,#000 13px) left/51% 100% no-repeat,
-      radial-gradient(circle 13px at 100% 50%,transparent 12px,#000 13px) right/51% 100% no-repeat;
+  .menu-figure{max-width:430px;margin:0 auto}
+  .menu-figure svg{display:block;width:100%;height:auto}
+  .menu-figure figcaption{
+    text-align:center;font-size:.95rem;color:var(--brown);
+    font-style:italic;margin-top:.4rem;
   }
-  a.stub{color:inherit;text-decoration:none;transition:background .15s ease}
-  a.stub:hover{background:#FFF6E0}
-  a.stub:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
-  .stub-body{flex:1;min-width:0;padding-left:.5rem}
-  .stub h3{font-size:1.25rem;color:var(--brown-deep);margin-bottom:.15rem}
-  .stub p{font-size:.95rem;color:#6B4A30}
-  .price{
-    flex:none;
-    border-left:3px dashed rgba(122,74,43,.45);
-    padding-left:1rem;
-    display:flex;align-items:center;
-  }
-  .price span{
-    display:flex;align-items:center;justify-content:center;
-    width:64px;height:64px;border-radius:50%;
-    background:var(--orange);color:var(--cream-lite);
-    font-family:'Righteous',cursive;font-size:1.05rem;
-    text-align:center;line-height:1.05;
-    transform:rotate(7deg);
-    padding:.2rem;
-  }
-  .stubs .price span{background:var(--teal)}
-  .price span small{font-size:.78rem;display:block}
+  .menu-cta{text-align:center;margin-top:1.9rem}
 
   /* ============ FIND US ============ */
   .find{background:var(--brown);color:var(--cream)}
@@ -256,9 +222,6 @@
   }
   @media (max-width:480px){
     .brand span{font-size:1rem}
-    .stub{flex-direction:column;align-items:stretch;text-align:center;gap:.6rem}
-    .stub-body{padding-left:0}
-    .price{border-left:none;border-top:3px dashed rgba(122,74,43,.45);padding:.7rem 0 0;justify-content:center}
   }
 </style>
 </head>
@@ -374,7 +337,7 @@
       <div class="hero-caption">
         <p class="lead">A Caribbean beach bar on Main Street in Delta, Colorado. The nearest ocean is about 700 miles away. We checked. We opened anyway.</p>
         <p class="est">est. whenever the misters went in</p>
-        <a class="btn" href="#menu">See the Menu</a>
+        <a class="btn" href="/menu/">See the Menu</a>
         <a class="btn ghost" href="#find">Find Us</a>
       </div>
     </div>
@@ -482,16 +445,54 @@
         <p>Charcoal chicken from the truck out front, cold drinks from the bar inside. The chicken comes original or spicy, and that's all we're saying out here.</p>
       </div>
 
-      <div class="stubs tease">
-        <a class="stub tease" href="/menu/the-bowl/"><h3>The Bowl</h3></a>
-        <a class="stub tease" href="/menu/pollo-asado/"><h3>Pollo Asado</h3></a>
-        <a class="stub tease" href="/menu/tacos-de-pollo/"><h3>Tacos de Pollo</h3></a>
-        <a class="stub tease" href="/menu/quesadilla/"><h3>Quesadilla</h3></a>
-        <a class="stub tease" href="/menu/pollo-fries-nachos/"><h3>Pollo Fries / Nachos</h3></a>
-        <a class="stub tease" href="/menu/wings/"><h3>Wings</h3></a>
-      </div>
-      <div style="text-align:center;margin-top:1.8rem">
-        <a class="btn" href="/menu/">See the full menu</a>
+      <figure class="menu-figure">
+        <svg viewBox="0 0 360 260" role="img" aria-label="Flat illustration of two crossed chicken drumsticks over a charcoal grill">
+          <defs>
+            <g id="drumstick" stroke="#5C3720" stroke-width="5" stroke-linejoin="round">
+              <circle cx="50" cy="-9" r="8.5" fill="#F5E8CE"/>
+              <circle cx="50" cy="9" r="8.5" fill="#F5E8CE"/>
+              <rect x="18" y="-7" width="32" height="14" fill="#F5E8CE" stroke="none"/>
+              <path d="M20 -7 H49" stroke-linecap="round"/>
+              <path d="M20 7 H49" stroke-linecap="round"/>
+              <path d="M-32 0 C-32 -22 -15 -29 4 -23 C16 -19 22 -11 24 -7 L24 7 C22 11 16 19 4 23 C-15 29 -32 22 -32 0 Z" fill="#F2B33D"/>
+              <path d="M-21 -13 L-10 -6 M-19 6 L-7 13" stroke="#E8542F" stroke-width="4.5" stroke-linecap="round"/>
+            </g>
+          </defs>
+
+          <!-- sun behind -->
+          <circle cx="180" cy="126" r="82" fill="#F2B33D" opacity="0.28"/>
+
+          <!-- grill bowl and legs -->
+          <path d="M74 182 A106 70 0 0 0 286 182 Z" fill="#7A4A2B"/>
+          <path d="M100 212 A106 70 0 0 0 260 212 Z" fill="#5C3720" opacity="0.3"/>
+          <g stroke="#5C3720" stroke-width="9" stroke-linecap="round">
+            <path d="M112 222 L90 252"/>
+            <path d="M180 236 L180 254"/>
+            <path d="M248 222 L270 252"/>
+          </g>
+
+          <!-- grate -->
+          <ellipse cx="180" cy="180" rx="108" ry="17" fill="#5C3720"/>
+          <ellipse cx="180" cy="178" rx="99" ry="13" fill="#2E1C10"/>
+          <g stroke="#E8D9B8" stroke-width="3" stroke-linecap="round" opacity="0.85">
+            <path d="M92 175 H268"/>
+            <path d="M100 182 H260"/>
+            <path d="M126 187 H234"/>
+          </g>
+
+          <!-- flame licks through the bars -->
+          <path d="M118 179 C111 169 123 164 118 152 C132 162 130 174 118 179 Z" fill="#E8542F" opacity="0.9"/>
+          <path d="M242 179 C235 169 247 164 242 152 C256 162 254 174 242 179 Z" fill="#E8542F" opacity="0.9"/>
+
+          <!-- crossed drumsticks resting on the grate -->
+          <use href="#drumstick" transform="translate(146 142) rotate(203) scale(1.12)"/>
+          <use href="#drumstick" transform="translate(214 142) rotate(-23) scale(1.12)"/>
+        </svg>
+        <figcaption>we only do chicken, but we do it right</figcaption>
+      </figure>
+
+      <div class="menu-cta">
+        <a class="btn" href="/menu/">See the Menu</a>
       </div>
     </div>
   </section>
