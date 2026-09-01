@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tipsytrouttaproom.com/sitemap.xml
