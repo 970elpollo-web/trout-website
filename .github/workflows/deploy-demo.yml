@@ -1,0 +1,28 @@
+name: Deploy demo site
+
+on:
+  push:
+    branches: [brand-refresh]
+  workflow_dispatch:
+
+jobs:
+  deploy-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build demo bundle
+        run: |
+          rm -rf dist
+          cp -r public dist
+          cp public/preview/index.html dist/index.html
+          rm -rf dist/preview dist/sitemap.xml
+          printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+
+      - name: Deploy with Wrangler
+        uses: cloudflare/wrangler-action@v3
+        with:
+          wranglerVersion: "4.127.1"
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --config wrangler.demo.jsonc
