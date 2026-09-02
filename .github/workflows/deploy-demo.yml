@@ -15,8 +15,7 @@ jobs:
         run: |
           rm -rf dist
           cp -r public dist
-          cp public/preview/index.html dist/index.html
-          rm -rf dist/preview dist/sitemap.xml
+          rm -f dist/sitemap.xml
           printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
 
       - name: Deploy with Wrangler

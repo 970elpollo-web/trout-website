@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Tipsy Trout Taproom | Delta, Colorado</title>
-<meta name="description" content="A Caribbean beach bar in Delta, Colorado. Misters, surfboards, charcoal grilled chicken from the El Pollo truck outside. The ocean is 700 miles away. That is the point.">
+<title>The Tipsy Trout Taproom | Your Local Getaway in Delta, Colorado</title>
+<meta name="description" content="A taproom patio in Delta, Colorado with live music, cold drinks and charcoal grilled chicken from the El Pollo truck. Friday Afternoon Club starts early. Your local getaway, no passport required.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
@@ -156,6 +156,82 @@
   .pollo-band{background:#EBD9B4}
   .note{font-size:.9rem;color:var(--brown);font-style:italic}
 
+  /* ============ WHAT'S ON THIS WEEK ============ */
+  .week-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1rem;margin-top:1.5rem}
+  .week-card{
+    background:var(--cream-lite);
+    border:3px solid var(--brown);
+    border-radius:var(--radius);
+    padding:1.2rem 1.3rem;
+    box-shadow:5px 5px 0 var(--gold);
+  }
+  .week-card .when{
+    font-family:'Righteous',cursive;color:var(--orange);
+    font-size:.9rem;text-transform:uppercase;letter-spacing:1px;
+  }
+  .week-card h3{font-size:1.28rem;color:var(--brown-deep);margin:.15rem 0 .35rem}
+  .week-card p{font-size:.95rem;color:#6B4A30}
+  .week-note{margin-top:1.3rem;font-size:.95rem;color:var(--brown)}
+
+  /* ============ FRIDAY AFTERNOON CLUB ============ */
+  .fac{background:var(--orange);color:var(--cream-lite)}
+  .fac h2{color:var(--cream-lite)}
+  .fac .kicker{background:var(--brown-deep);color:var(--gold)}
+  .fac p{max-width:34em}
+  .fac-list{list-style:none;display:grid;gap:.55rem;margin:1.2rem 0 1.5rem}
+  .fac-list li{display:flex;align-items:baseline;gap:.65rem;font-weight:500}
+  .fac-list .dot{
+    flex:none;width:13px;height:13px;border-radius:50%;
+    background:var(--gold);border:2px solid var(--brown-deep);
+  }
+  .fac .btn{background:var(--cream-lite);color:var(--brown-deep)}
+  .fac .btn:hover{background:var(--gold)}
+
+  /* ============ DRINKS ============ */
+  .drinks{background:#EBD9B4}
+  .pours{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1rem;margin-top:1.5rem}
+  .pour{
+    background:var(--cream-lite);
+    border:3px solid var(--brown);
+    border-bottom-width:9px;
+    border-radius:var(--radius);
+    padding:1.2rem 1.3rem;
+  }
+  .pour h3{font-size:1.3rem;color:var(--brown-deep);margin-bottom:.2rem}
+  .pour p{font-size:.95rem;color:#6B4A30}
+
+  /* ============ PHOTO SLOTS ============ */
+  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-top:1.8rem}
+  .shot{
+    position:relative;overflow:hidden;
+    border:3px solid var(--brown);border-radius:var(--radius);
+    background:linear-gradient(160deg,var(--gold),var(--teal));
+    aspect-ratio:4/3;display:flex;align-items:flex-end;
+    box-shadow:5px 5px 0 rgba(122,74,43,.25);
+  }
+  .shot::after{
+    content:attr(data-shot);display:block;width:100%;
+    background:rgba(92,55,32,.85);color:var(--cream-lite);
+    font-size:.78rem;line-height:1.35;padding:.5rem .7rem;
+  }
+
+  /* ============ MERCH + SOCIALS ============ */
+  .pill-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+  .pill{
+    font-family:'Righteous',cursive;font-size:.95rem;
+    background:var(--cream-lite);color:var(--brown-deep);
+    border:3px solid var(--teal);border-radius:999px;padding:.35rem 1.05rem;
+  }
+  .socials{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.7rem}
+  .socials a{
+    display:inline-block;text-decoration:none;
+    font-family:'Righteous',cursive;font-size:.95rem;
+    background:var(--orange);color:var(--cream-lite);
+    border:3px solid var(--gold);border-radius:999px;padding:.4rem 1.05rem;
+  }
+  .socials a:hover{background:var(--gold);color:var(--brown-deep)}
+  #story .twocol{align-items:start}
+
   /* ============ MENU ============ */
   .menu-head{text-align:center;margin-bottom:1.6rem}
   .menu-head p{max-width:32em;margin:0 auto}
@@ -281,8 +357,10 @@
   </a>
   <nav aria-label="Main">
     <ul class="nav-links">
+      <li><a href="#week">What's On</a></li>
+      <li><a href="#fac">FAC</a></li>
+      <li><a href="#drinks">Drinks</a></li>
       <li><a href="/menu/">Menu</a></li>
-      <li><a href="#patio">The Patio</a></li>
       <li><a href="#find">Find Us</a></li>
     </ul>
   </nav>
@@ -296,7 +374,7 @@
       <div class="poster-inner">
         <svg viewBox="0 0 800 560" role="img" aria-labelledby="heroTitle heroDesc">
           <title id="heroTitle">The Tipsy Trout Taproom</title>
-          <desc id="heroDesc">A 1970s style surf poster: a setting sun of concentric gold and orange circles, layered waves, a longboard leaning at the edge, and a hand-painted trout in sunglasses riding the top wave.</desc>
+          <desc id="heroDesc">A 1970s style surf poster reading The Tipsy Trout Taproom, Your Local Getaway, with a setting sun of gold and orange circles, layered waves, a longboard leaning at the edge, and a hand-painted trout in sunglasses riding the top wave.</desc>
 
           <!-- setting sun -->
           <circle cx="400" cy="330" r="185" fill="#F2B33D" opacity="0.3"/>
@@ -310,8 +388,8 @@
           <text style="font-family:'Righteous',cursive" font-size="56" fill="#7A4A2B" letter-spacing="3">
             <textPath href="#arcpath" startOffset="50%" text-anchor="middle">THE TIPSY TROUT</textPath>
           </text>
-          <rect x="302" y="338" width="196" height="44" rx="22" fill="#7A4A2B"/>
-          <text x="400" y="368" text-anchor="middle" style="font-family:'Righteous',cursive" font-size="24" fill="#F5E8CE" letter-spacing="7">TAPROOM</text>
+          <rect x="302" y="332" width="196" height="44" rx="22" fill="#7A4A2B"/>
+          <text x="400" y="362" text-anchor="middle" style="font-family:'Righteous',cursive" font-size="24" fill="#F5E8CE" letter-spacing="7">TAPROOM</text>
 
           <!-- longboard leaning in -->
           <g transform="translate(76 190) rotate(9)">
@@ -332,16 +410,75 @@
           <path d="M0 442 Q50 426 100 442 T200 442 T300 442 T400 442 T500 442 T600 442 T700 442 T800 442 L800 560 L0 560 Z" fill="#F2B33D"/>
           <path d="M0 484 Q50 468 100 484 T200 484 T300 484 T400 484 T500 484 T600 484 T700 484 T800 484 L800 560 L0 560 Z" fill="#4E8577"/>
           <path d="M0 526 Q50 510 100 526 T200 526 T300 526 T400 526 T500 526 T600 526 T700 526 T800 526 L800 560 L0 560 Z" fill="#7A4A2B"/>
+
+          <!-- tagline banner riding the waves -->
+          <text x="400" y="438" text-anchor="middle" style="font-family:'Righteous',cursive" font-size="34" fill="#F5E8CE" letter-spacing="4">YOUR LOCAL GETAWAY</text>
         </svg>
       </div>
       <div class="hero-caption">
-        <p class="lead">A Caribbean beach bar on Main Street in Delta, Colorado. The nearest ocean is about 700 miles away. We checked. We opened anyway.</p>
-        <p class="est">est. whenever the misters went in</p>
-        <a class="btn" href="/menu/">See the Menu</a>
-        <a class="btn ghost" href="#find">Find Us</a>
+        <p class="lead">A patio, a stage, cold drinks and chicken off the grill, right here in Delta, Colorado. No passport required.</p>
+        <p class="est">the nearest ocean is 700 miles away. we checked. we opened anyway.</p>
+        <a class="btn" href="#week">What's On This Week</a>
+        <a class="btn ghost" href="/menu/">See the Menu</a>
       </div>
     </div>
   </div>
+
+  <svg class="waveband" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <use href="#dwv" fill="#E8542F"/>
+    <use href="#dwv" y="30" fill="#F2B33D"/>
+    <use href="#dwv" y="60" fill="#4E8577"/>
+    <use href="#dwv" y="90" fill="#7A4A2B"/>
+  </svg>
+
+  <!-- ============ WHAT'S ON THIS WEEK ============ -->
+  <section id="week">
+    <div class="wrap">
+      <span class="kicker">On the patio</span>
+      <h2>What's On This Week<span class="alt">.</span></h2>
+      <p>Music, games and the reason Friday feels different around here.</p>
+      <div class="week-grid">
+        <div class="week-card">
+          <span class="when">Every Friday</span>
+          <h3>Friday Afternoon Club</h3>
+          <p>Half price drafts and live music. Friday starts early around here.</p>
+        </div>
+        <div class="week-card">
+          <span class="when">Most weekends</span>
+          <h3>Live music</h3>
+          <p>Local acts on the patio stage. Bring a chair's worth of friends.</p>
+        </div>
+        <div class="week-card">
+          <span class="when">Through the week</span>
+          <h3>Trivia and watch parties</h3>
+          <p>Games on, teams welcome, nobody takes it too seriously.</p>
+        </div>
+      </div>
+      <p class="week-note">This week's lineup and times go up on our socials first. <a href="#find">Follow along</a> so you don't miss a good one.</p>
+    </div>
+  </section>
+
+  <svg class="waveband" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <use href="#dwv" fill="#E8542F"/>
+    <use href="#dwv" y="30" fill="#F2B33D"/>
+    <use href="#dwv" y="60" fill="#4E8577"/>
+    <use href="#dwv" y="90" fill="#7A4A2B"/>
+  </svg>
+
+  <!-- ============ FRIDAY AFTERNOON CLUB ============ -->
+  <section id="fac" class="fac">
+    <div class="wrap">
+      <span class="kicker">FAC</span>
+      <h2>Friday Afternoon Club<span class="alt">.</span></h2>
+      <p>Clock out, come over. Half price drafts, live music and the patio filling up while the sun is still doing its thing.</p>
+      <ul class="fac-list">
+        <li><span class="dot"></span> Half price drafts</li>
+        <li><span class="dot"></span> Live music on the patio</li>
+        <li><span class="dot"></span> Every Friday, all year</li>
+      </ul>
+      <a class="btn" href="#find">Plan Your Friday</a>
+    </div>
+  </section>
 
   <svg class="waveband" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <use href="#dwv" fill="#E8542F"/>
@@ -356,8 +493,8 @@
       <div>
         <span class="kicker">The Vibe</span>
         <h2>The Patio<span class="alt">.</span> Beach rules apply<span class="alt">.</span></h2>
-        <p>Delta is high desert, dusty and bright. So we hung surfboards on the walls and put misters over the patio. Ten steps off Main Street and it feels like a beach day, minus the sand in your sandwich.</p>
-        <p>Nobody has surfed the Gunnison on a longboard yet. We keep one waxed just in case. Until then the boards stay bolted to the wall, the misters stay on, and the sunset over the Grand Mesa does the rest of the decorating for free.</p>
+        <p>Delta is high desert, dusty and bright. So we hung surfboards on the walls, ran misters over the patio and put shade sails up for the hot afternoons. Ten steps off the street and it feels like a beach day, minus the sand in your sandwich.</p>
+        <p>There's a stage in the corner, so most weekends somebody is playing while the sun goes down behind the Grand Mesa. Room enough to bring everybody. Come for an hour, stay for four. It happens a lot.</p>
         <p class="note">Dogs welcome on the patio. Flip flops encouraged, never required.</p>
       </div>
       <figure class="sidecard">
@@ -382,6 +519,41 @@
         </svg>
         <figcaption>the boards are bolted down, we learned that one early</figcaption>
       </figure>
+    </div>
+    <div class="wrap shots">
+      <div class="shot" data-shot="PHOTO: the patio packed on a Friday, golden hour, string lights on, people mid-laugh."></div>
+      <div class="shot" data-shot="PHOTO: the stage mid set, band playing, crowd watching."></div>
+      <div class="shot" data-shot="PHOTO: drinks on a table with the patio behind, or a bartender pouring."></div>
+    </div>
+  </section>
+
+  <svg class="waveband" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <use href="#dwv" fill="#E8542F"/>
+    <use href="#dwv" y="30" fill="#F2B33D"/>
+    <use href="#dwv" y="60" fill="#4E8577"/>
+    <use href="#dwv" y="90" fill="#7A4A2B"/>
+  </svg>
+
+  <!-- ============ DRINKS ============ -->
+  <section id="drinks" class="drinks">
+    <div class="wrap">
+      <span class="kicker">The Bar</span>
+      <h2>Something Cold<span class="alt">.</span> Sorted<span class="alt">.</span></h2>
+      <p>Drafts, cocktails on tap and plenty that skips the booze. You do not need to know a thing about beer to order well here.</p>
+      <div class="pours">
+        <div class="pour">
+          <h3>High Tide Margarita</h3>
+          <p>Our draft margarita. Order one, thank us out on the patio.</p>
+        </div>
+        <div class="pour">
+          <h3>Blackberry Lemonade</h3>
+          <p>Sweet, tart, dangerously easy on a hot afternoon.</p>
+        </div>
+        <div class="pour">
+          <h3>On Draft</h3>
+          <p>A rotating wall of taps. Ask what's pouring and we'll point you at something good.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -504,6 +676,35 @@
     <use href="#dwv" y="90" fill="#7A4A2B"/>
   </svg>
 
+  <!-- ============ STORY + MERCH ============ -->
+  <section id="story">
+    <div class="wrap twocol">
+      <div>
+        <span class="kicker">Our Story</span>
+        <h2>We Built The Place We Wanted To Go<span class="alt">.</span></h2>
+        <p>Delta did not have a spot like this, so we made one. Somewhere you can sit outside, hear music, eat well and stay a lot longer than you planned.</p>
+        <p>That is the whole idea. A couple of hours where it feels like you got away, ten minutes from your house.</p>
+      </div>
+      <div>
+        <span class="kicker">Merch</span>
+        <h2>Wear The Getaway<span class="alt">.</span></h2>
+        <p>Hats, tees and sun hoodies you would actually wear out of the house. Ask at the bar.</p>
+        <div class="pill-row">
+          <span class="pill">FAC</span>
+          <span class="pill">Tipsy</span>
+          <span class="pill">Your Local Getaway</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="waveband" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <use href="#dwv" fill="#E8542F"/>
+    <use href="#dwv" y="30" fill="#F2B33D"/>
+    <use href="#dwv" y="60" fill="#4E8577"/>
+    <use href="#dwv" y="90" fill="#7A4A2B"/>
+  </svg>
+
   <!-- ============ FIND US ============ -->
   <section id="find" class="find">
     <div class="wrap">
@@ -519,7 +720,15 @@
         </div>
         <div class="find-card">
           <h3>Hours</h3>
-          <p>Give us a call for today's hours, or check our socials. Friday Afternoon Club starts early.</p>
+          <p>Give us a call for today's hours. Friday Afternoon Club starts early.</p>
+        </div>
+        <div class="find-card">
+          <h3>Follow Along</h3>
+          <p>This week's music and events land here first.</p>
+          <div class="socials">
+            <a href="https://www.facebook.com/search/top?q=tipsy%20trout%20taproom">Facebook</a>
+            <a href="https://www.instagram.com/">Instagram</a>
+          </div>
         </div>
       </div>
     </div>
